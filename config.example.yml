@@ -1,0 +1,32 @@
+somesite:
+  url: 'https://somewebsite.com/search/item
+  nextpage: 'nextpage'
+  requestEveryMillis: 2000
+  elements:
+    nextpage:
+      xpath: '//div[@class="nav"]/a[@class="nextpage"]'
+      type: attribute
+      attribute: 'href'
+    entries:
+      xpath: '//ul[@id="itemlist"]/li[contains(@class, "itementry")][.//div[@class="itemdesc"]]'
+      type: elements
+      elements:
+        title:
+          xpath: '//div[@class="itemdesc"]/h2/a'
+          type: text
+        price:
+          xpath: '//div[@class="itemprice"]/strong'
+          type: text
+        image:
+          xpath: '//div[@class="itemdesc"]/div[@data-imgsrc]'
+          type: attribute
+          attribute: 'data-imgsrc'
+        article:
+          xpath: '//div[@class="itemdesc"]/h2/a'
+          type: attribute
+          attribute: 'href'
+          resolveUrl: true
+        date:
+          xpath: '//div[@class="itemdate"]'
+          type: text
+          trim: true
